@@ -7,9 +7,9 @@ interface NewsResponse {
   topic: string;
   timestamp: string;
   paid: boolean;
-  cost?: string;        // optional – will be shown if returned
+  cost?: string; // optional – will be shown if returned
   articleCount?: number; // optional – will be shown if returned
-  network?: string;     // optional – will be shown if returned
+  network?: string; // optional – will be shown if returned
 }
 
 export default function Home() {
@@ -46,7 +46,8 @@ export default function Home() {
 
   // Default values (only used when API doesn't return them)
   const cost = response?.cost ?? "0.01 USDC";
-  const articleCount = response?.articleCount ?? response?.articles?.length ?? 0;
+  const articleCount =
+    response?.articleCount ?? response?.articles?.length ?? 0;
   const network = response?.network ?? "Devnet";
 
   return (
@@ -65,30 +66,66 @@ export default function Home() {
             <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
               FareMeter News
             </h1>
-            <p className="text-sm text-gray-300 mt-1">Pay-per-use news API powered by Solana</p>
+            <p className="text-sm text-gray-300 mt-1">
+              Pay-per-use news API powered by Solana
+            </p>
           </div>
           <div className="flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-2 rounded-full text-sm font-bold text-black">
             <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
             {network} Live
           </div>
+          {/* Pitch Deck Button */}
+          <button
+            onClick={() => (window.location.href = "/pitch-deck")}
+            className="px-5 py-2.5 bg-gradient-to-r from-pink-500 to-violet-600 text-white font-semibold text-sm rounded-full shadow-lg hover:shadow-xl hover:from-pink-400 hover:to-violet-500 transform hover:scale-105 transition-all duration-200 flex items-center gap-2"
+          >
+            <span>View Pitch Deck</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
+          </button>
         </div>
       </header>
 
       <main className="max-w-5xl mx-auto px-6 py-12 space-y-12">
-
         {/* Dynamic Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { label: "Cost per Query", value: cost, grad: "from-cyan-400 to-blue-400" },
-            { label: "Articles Returned", value: `${articleCount} Articles`, grad: "from-purple-400 to-pink-400" },
-            { label: "Network", value: network, grad: "from-emerald-400 to-teal-400" },
+            {
+              label: "Cost per Query",
+              value: cost,
+              grad: "from-cyan-400 to-blue-400",
+            },
+            {
+              label: "Articles Returned",
+              value: `${articleCount} Articles`,
+              grad: "from-purple-400 to-pink-400",
+            },
+            {
+              label: "Network",
+              value: network,
+              grad: "from-emerald-400 to-teal-400",
+            },
           ].map((c, i) => (
             <div
               key={i}
               className="glass p-6 rounded-2xl border border-white/10 hover:shadow-xl transition-shadow"
             >
               <p className="text-sm text-gray-400 mb-1">{c.label}</p>
-              <p className={`text-2xl font-bold bg-gradient-to-r ${c.grad} bg-clip-text text-transparent`}>
+              <p
+                className={`text-2xl font-bold bg-gradient-to-r ${c.grad} bg-clip-text text-transparent`}
+              >
                 {c.value}
               </p>
             </div>
@@ -112,9 +149,10 @@ export default function Home() {
               onClick={handleFetchNews}
               disabled={loading || !topic.trim()}
               className={`px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2
-                ${loading || !topic.trim()
-                  ? "bg-gray-700 cursor-not-allowed"
-                  : "bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 shadow-md hover:shadow-lg"
+                ${
+                  loading || !topic.trim()
+                    ? "bg-gray-700 cursor-not-allowed"
+                    : "bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 shadow-md hover:shadow-lg"
                 }`}
             >
               {loading ? "Processing..." : `Fetch News (Pay ${cost})`}
@@ -159,11 +197,33 @@ export default function Home() {
 
         {/* Setup Guide */}
         <div className="glass p-6 rounded-xl border border-white/10 text-xs text-gray-400">
-          <h3 className="text-base font-semibold text-white mb-3">Quick Setup</h3>
+          <h3 className="text-base font-semibold text-white mb-3">
+            Quick Setup
+          </h3>
           <ol className="space-y-1">
-            <li>1. Install <a href="https://phantom.app" target="_blank" className="text-cyan-400 hover:underline">Phantom</a></li>
-            <li>2. Switch to <strong>Devnet</strong></li>
-            <li>3. Get USDC from <a href="https://faucet.circle.com" target="_blank" className="text-cyan-400 hover:underline">Circle Faucet</a></li>
+            <li>
+              1. Install{" "}
+              <a
+                href="https://phantom.app"
+                target="_blank"
+                className="text-cyan-400 hover:underline"
+              >
+                Phantom
+              </a>
+            </li>
+            <li>
+              2. Switch to <strong>Devnet</strong>
+            </li>
+            <li>
+              3. Get USDC from{" "}
+              <a
+                href="https://faucet.circle.com"
+                target="_blank"
+                className="text-cyan-400 hover:underline"
+              >
+                Circle Faucet
+              </a>
+            </li>
             <li>4. Approve payment in Phantom</li>
           </ol>
         </div>
@@ -176,7 +236,9 @@ export default function Home() {
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
         }
-        .delay-1000 { animation-delay: 1s; }
+        .delay-1000 {
+          animation-delay: 1s;
+        }
       `}</style>
     </div>
   );
