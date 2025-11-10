@@ -410,20 +410,7 @@ export default function PitchDeck() {
       </div>
 
       {/* Footer */}
-      <footer className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center text-xs text-gray-400">
-        <p>
-          Built by{" "}
-          <a
-            href="https://x.com/v_potpelliwar"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-cyan-400 hover:underline"
-          >
-            @v_potpelliwar
-          </a>{" "}
-          | India | November 10, 2025
-        </p>
-      </footer>
+      <footer className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center text-xs text-gray-400"></footer>
 
       <style jsx>{`
         .glass {
