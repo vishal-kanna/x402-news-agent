@@ -12,6 +12,7 @@ import {
   Globe,
   Lock,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function PitchDeck() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -336,6 +337,29 @@ export default function PitchDeck() {
         </div>
       </header>
 
+      {/* Back to Search – ALWAYS FULLY VISIBLE */}
+      <div className="absolute top-[100px] left-6 z-50">
+        <Link
+          href="/"
+          className={`
+      flex items-center gap-2
+      px-6 py-2.5               /* generous horizontal padding */
+      min-w-[180px]             /* never shrink below this */
+      justify-center            /* center icon + text */
+      bg-white/10 backdrop-blur-md
+      border border-white/20
+      rounded-full
+      text-white font-medium text-sm
+      hover:bg-white/20 hover:border-cyan-400
+      transition-all duration-200
+      group
+    `}
+        >
+          <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          <span className="whitespace-nowrap">Back to Search</span>
+        </Link>
+      </div>
+
       {/* Main slide content */}
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="min-h-[70vh]">
@@ -384,6 +408,22 @@ export default function PitchDeck() {
           </button>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center text-xs text-gray-400">
+        <p>
+          Built by{" "}
+          <a
+            href="https://x.com/v_potpelliwar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan-400 hover:underline"
+          >
+            @v_potpelliwar
+          </a>{" "}
+          | India | November 10, 2025
+        </p>
+      </footer>
 
       <style jsx>{`
         .glass {
