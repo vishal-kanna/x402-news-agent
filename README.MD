@@ -32,9 +32,6 @@ No subscriptions. No logins. Just **micro-payments via Phantom wallet**.
 git clone https://github.com/vishal-kanna/x402-news-agent.git
 cd x402-news-agent
 ```
-
-> Replace `yourusername` with your actual GitHub handle.
-
 ---
 
 ## Setup
